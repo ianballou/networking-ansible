@@ -2,11 +2,11 @@
 - name: "nxos: run configure trunk port using network_cli"
   nxos_command:
       commands:
-          - config
-          - "default interface {{ port_name }}"
+          - "config"
           - "interface {{ port_name }}"
+          - "switchport trunk allowed vlan none"
           - "switchport mode trunk"
           - "switchport trunk native vlan {{ _vlan_id }}"
-          - "switchport trunk allowed vlan add {{ _vlan_id }}{% for vlan in trunked_vlans %} {{ vlan }}{% endfor %}" 
-          - exit
+            #- "switchport trunk allowed vlan add {{ _vlan_id }}{% for vlan in trunked_vlans %} {{ vlan }}{% endfor %}"
+          - "exit"
   connection: network_cli
