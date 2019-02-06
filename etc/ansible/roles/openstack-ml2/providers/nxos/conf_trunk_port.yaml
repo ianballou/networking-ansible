@@ -7,6 +7,6 @@
           - "switchport trunk allowed vlan none"
           - "switchport mode trunk"
           - "switchport trunk native vlan {{ _vlan_id }}"
-            #- "switchport trunk allowed vlan add {{ _vlan_id }}{% for vlan in trunked_vlans %} {{ vlan }}{% endfor %}"
+          - "switchport trunk allowed vlan add {{ _vlan_id }}{% for vlan in trunked_vlans %} ,{{ vlan }}{% endfor %}"
           - "exit"
   connection: network_cli
